@@ -26,4 +26,17 @@ class CommentController extends Controller
         'message' => 'El comentario se ha guardado correctamente'
       ));
     }
+
+    public function delete($comment_id){
+      $user = \Auth::user();
+      $comment = comment::find($comment_id);
+
+      if($user && ($comment->user_id == $user->id || $comment->video->user_id == $user-->id)){
+        $comment->delete();
+      }
+      
+      return redirect()->route('detailVideo',['video_id' => $comment->video_id])->with(array(
+        'message' => 'El comentario se ha borrado correctamente'
+      ));
+    }
 }

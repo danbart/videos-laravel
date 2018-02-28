@@ -62,8 +62,20 @@ Route::get('/video-file/{filename}',array(
   'uses' => 'videoController@getVideo'
 ));
 
+Route::get('/delete-video/{video_id}',array(
+  'as' => 'videoDelete',
+  'middleware' => 'auth',
+  'uses' => 'videoController@delete'
+));
+
 Route::post('/comment',array(
   'as' => 'comment',
   'middleware' => 'auth',
   'uses' => 'CommentController@store'
+));
+
+Route::get('/delete-comment/{comment_id}',array(
+  'as' => 'commentDelete',
+  'middleware' => 'auth',
+  'uses' => 'CommentController@delete'
 ));

@@ -78,4 +78,33 @@ class videoController extends Controller
       $file = storage::disk('videos')->get($filename);
       return new Response($file, 200);
     }
+
+    public function delete($video_id){
+      $user = \Auth::user();
+      $video = video::find($video_id);
+      $comment = comment::where('video_id', $video_id)->get();
+
+      if($user && $video->user_id == $user->id){
+
+        //eliminar los Comentarios
+        if($comment && count($comment) >= 1){
+          foreach($comment as $commen){
+            $commen->delete();
+          }
+        }
+        //eliminar ficheros
+        Storage::disk('images')->delete($video->image);
+        Storage::disk('videos')->delete($video->video_path);
+        //eliminar registro
+        $video->delete();
+        $message = array(
+          "message" => 'El video se ha eliminado correctamente!!'
+        );
+      } else{
+        $message = array(
+          "message" => 'El video se ha eliminado correctamente!!'
+        );
+      }
+      return redirect()->route('home')->with($message);
+    }
 }

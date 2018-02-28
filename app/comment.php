@@ -13,4 +13,8 @@ class comment extends Model
       return $this->belongsTo('App\User', 'user_id');
     }
 
+    public function video(){
+      return $this->belongsTo('App\video', 'video_id');
+    }
+
 }
