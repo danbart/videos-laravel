@@ -4,11 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="container">
-          @if(session('message'))
-          <div class="alert alert-success">
-           {{session('message')}}
-          </div>
-          @endif
+        <h2>Canal de {{$user->name.' '.$user->surname}}</h2>
+
+        <div class="clearfix"></div>
           @include('video.videoslist')
         </div>
     </div>

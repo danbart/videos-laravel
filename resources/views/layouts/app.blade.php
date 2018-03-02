@@ -49,14 +49,14 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Inicio</a></li>
+                    <li><a href="{{ url('/') }}">Inicio</a></li>
                 </ul>
 
-                  <form class="navbar-form navbar-left" action="" role="search">
+                  <form class="navbar-form navbar-left" action="{{url('/buscar')}}" role="search">
                     <div class="form-group">
                       <input type="text" class="form-control" name="search" placeholder="¿Que quieres ver?">
                     </div>
-                    <button type="submit" class="btn btn-default" name="button">
+                    <button type="submit" class="btn btn-default">
                       <span class="glyphicon glyphicon-search"></span>
                     </button>
                   </form>

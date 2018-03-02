@@ -16,8 +16,11 @@ body{
 
 .video-title{
   font-weight: bold;
-  font-size: 18px;  
+  font-size: 18px;
 }
 .video-title a{
   color: #444;
+}
+.btn-filter{
+  margin-top: 5px;
 }
